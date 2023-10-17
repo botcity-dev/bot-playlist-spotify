@@ -33,6 +33,7 @@ def main():
 
     # Opens the BotCity website.
     bot.browse("https://open.spotify.com/intl-pt")
+    bot.set_screen_resolution(3000, 2000)
 
     # Fazendo login
     entrar = bot.find_element(".LKFFk88SIRC9QKKUWR5u > button:nth-child(2)", By.CSS_SELECTOR)
@@ -60,30 +61,18 @@ def main():
     campo_buscar_musicas = bot.find_element("input.Type__TypeElement-sc-goli3j-0", By.CSS_SELECTOR)
     campo_buscar_musicas.click()
 
-    # necessário descer a tela para o botão de adicionar ser encontrado na próxima etapa
-    bot.scroll_down(clicks=200)
-
     # dica: deixar o mais específico possível (nome da música e banda)
-    campo_buscar_musicas.send_keys("dormi na praça bruno e marrone")
+    campo_buscar_musicas.send_keys("nx zero cedo ou tarde")
+
     
     botao_adicionar = bot.find_element("/html/body/div[4]/div/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div[2]/main/div[1]/section/div[2]/div[3]/div[2]/div[1]/div/div[2]/div[1]/div/div[4]/button", By.XPATH)
     botao_adicionar.click()
 
 
     # Wait 3 seconds before closing
-    #bot.wait(3000)
+    bot.wait(3000)
+    bot.stop_browser()
 
-    # Finish and clean up the Web Browser
-    # You MUST invoke the stop_browser to avoid
-    # leaving instances of the webdriver open
-    #bot.stop_browser()
-
-    # Uncomment to mark this task as finished on BotMaestro
-    # maestro.finish_task(
-    #     task_id=execution.task_id,
-    #     status=AutomationTaskFinishStatus.SUCCESS,
-    #     message="Task Finished OK."
-    # )
 
 
 def not_found(label):
