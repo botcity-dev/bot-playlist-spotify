@@ -1,18 +1,13 @@
-# Import for the Desktop Bot
 from botcity.core import DesktopBot
-
-# Import for integration with BotCity Maestro SDK
 from botcity.maestro import *
-
 import os
 
-# Disable errors if we are not connected to Maestro
-BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 def main():
     bot = DesktopBot()
 
-    name_of_the_music = "olivia rodrigo bad idea right"
+    # coloque o nome da música nessa variável
+    name_of_the_music = ""
 
     # variáveis de ambiente com dados de login no sistema operacional
     username = os.getenv("EMAIL_SPOTIFY")
@@ -69,11 +64,7 @@ def main():
     
     if not bot.find( "play_button", matching=0.97, waiting_time=10000):
         not_found("play_button")
-    bot.click()    
-      
-    #if not bot.find( "music_label", matching=0.97, waiting_time=10000):
-    #    not_found("music_label")
-    #bot.click_relative(298, 1)
+    bot.click()  
     
     if not bot.find( "three_points_menu", matching=0.97, waiting_time=10000):
         not_found("three_points_menu")
@@ -105,7 +96,7 @@ def main():
     bot.alt_f4()
 
     # fecha o navegador
-    # bot.alt_f4()
+    bot.alt_f4()
     
 
 def not_found(label):
